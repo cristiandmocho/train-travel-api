@@ -1,0 +1,32 @@
+{
+  "name": "train-travel-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "prepublish": "tsc",
+    "start": "tsc && node dist/server.js",
+    "monitor": "nodemon dist/server.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Cristian Mocho",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.9",
+    "@types/express": "^4.17.11",
+    "@types/morgan": "^1.9.2",
+    "tslint": "^5.20.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dayjs": "^1.10.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "morgan": "^1.10.0",
+    "xml-js": "^1.6.11"
+  }
+}
