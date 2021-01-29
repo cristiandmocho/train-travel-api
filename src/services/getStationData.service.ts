@@ -38,8 +38,11 @@ export default class StationService {
 
     // The ".ArrayOfObjStationData.objStationData" part is necessary due to
     // the way the data comes from the Irish Rail API and the way xml-js parses it
-    const obj = XMLParser.Parse(data).ArrayOfObjStation.objStation;
+    let obj = XMLParser.Parse(data).ArrayOfObjStation.objStation;
 
+    if (!obj) throw new Error('No stations found');
+
+    if (!(obj instanceof Array)) obj = [obj];
     if (obj[0].error) throw obj[0].error;
 
     // Normalizing data
@@ -63,10 +66,12 @@ export default class StationService {
 
     // The ".ArrayOfObjStationData.objStationData" part is necessary due to
     // the way the data comes from the Irish Rail API and the way xml-js parses it
-    const obj = XMLParser.Parse(data).ArrayOfObjStationData.objStationData;
+    let obj = XMLParser.Parse(data).ArrayOfObjStationData.objStationData;
 
-    if (!obj) throw new Error('No stations found');
-    if (obj[0].error) throw obj[0].error;
+    if (!obj) throw new Error('No trains found for the next 90 minutes, please try another station.');
+
+    if (!(obj instanceof Array)) obj = [obj];
+    if (obj[0].error) throw new Error(obj[0].error.message);
 
     // Normalizing data
     const resp: ITrainInfo[] = obj.map((o: any) => {
