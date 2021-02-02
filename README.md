@@ -1,5 +1,9 @@
 # Train Travel API
 
+Train Travel is a web app that uses the Irish Rail API to show all trains attending the selected station in the next 90 minutes. It shows the train code, origin, destination, due time in minutes and direction. The selection of the stations is made by an auto-complete feature. The project was made with Vue and Vuetify, and it's also available in my public repositories, named `train-travel-web`.
+
+The `train-travel-api` is the complement to the web app. It's a NodeJS with Express REST API written in Typescript. It provides the developers with two simple routes to get all the stations available and the trains attending a given station. All the data is dynamically fetched from the Irish Rail API and converted from XML to JSON to better serve the web app.
+
 > Author: **Cristian Mocho**
 >
 > cristiandmocho@gmail.com
